@@ -60,7 +60,7 @@ function calculateEvolution(
   if (transfered_pokemon >0) {
     console.log(underline('Transfer pokemon ' + transfered_pokemon));
   }
-  evolved = calculateEvolution(
+  calculateEvolution(
     candies_remaining,
     candies_to_evolve,
     pokemons,
