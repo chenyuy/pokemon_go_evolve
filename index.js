@@ -4,6 +4,7 @@ function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve
   }
 
   var evolved = total_evolved;
+  var new_evolved = 0;
   var candies_remaining = total_candies;
   var pokemons = pokemons_to_evolve;
   var i = 0;
@@ -16,11 +17,13 @@ function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve
 
     candies_remaining -= candies_to_evolve;
     pokemons--;
-    evolved++;
+    new_evolved++;
     candies_remaining++;
   }
 
-  console.log('Evolved ' + evolved + ' pokemons.');
+  console.log('Evolved ' + new_evolved + ' pokemons.');
+
+  evolved = total_evolved + new_evolved;
 
   // Transfer evolved pokemons first
   var transfered_evolved = 0;
@@ -48,3 +51,5 @@ function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve
     evolved = calculateEvolution(candies_remaining, candies_to_evolve, pokemons, evolved);
   }
 }
+
+calculateEvolution(90, 50, 16, 6);
