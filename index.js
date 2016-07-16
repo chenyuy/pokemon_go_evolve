@@ -1,4 +1,9 @@
-function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve, total_evolved) {
+function calculateEvolution(
+  total_candies,
+  candies_to_evolve,
+  pokemons_to_evolve,
+  total_evolved
+) {
   if (pokemons_to_evolve === 0) {
     return;
   }
@@ -21,7 +26,7 @@ function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve
     candies_remaining++;
   }
 
-  console.log('Evolved ' + new_evolved + ' pokemons.');
+  console.log(bold('Evolved ' + new_evolved + ' pokemons.'));
 
   evolved = total_evolved + new_evolved;
 
@@ -44,10 +49,29 @@ function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve
     transfered_pokemon++;
   }
 
-  // If we can evolve start from the begining
-  if (pokemons > 0 && candies_remaining >= candies_to_evolve) {
-    transfered_evolved && console.log('Transfer evolved ' + transfered_evolved);
-    transfered_pokemon && console.log('Transfer pokemon ' + transfered_pokemon);
-    evolved = calculateEvolution(candies_remaining, candies_to_evolve, pokemons, evolved);
+  // If we cannot evolve we stop. Otherwise we start from the begining.
+  if (pokemons <= 0 || candies_remaining < candies_to_evolve) {
+    return;
   }
+
+  if (transfered_evolved > 0) {
+    console.log(underline('Transfer evolved ' + transfered_evolved));
+  }
+  if (transfered_pokemon >0) {
+    console.log(underline('Transfer pokemon ' + transfered_pokemon));
+  }
+  evolved = calculateEvolution(
+    candies_remaining,
+    candies_to_evolve,
+    pokemons,
+    evolved
+  );
+}
+
+function bold(string) {
+  return '\033[1m' + string + '\033[0m';
+}
+
+function underline(string) {
+  return '\033[2m' + string + '\033[0m';
 }
