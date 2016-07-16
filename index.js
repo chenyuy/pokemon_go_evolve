@@ -51,5 +51,3 @@ function calculateEvolution(total_candies, candies_to_evolve, pokemons_to_evolve
     evolved = calculateEvolution(candies_remaining, candies_to_evolve, pokemons, evolved);
   }
 }
-
-calculateEvolution(90, 50, 16, 6);
